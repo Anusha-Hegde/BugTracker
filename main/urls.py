@@ -19,7 +19,9 @@ from . import views
 app_name = 'main'
 
 urlpatterns = [
-    path('', views.indexpage, name = 'index'),
-    path('login', views.loginpage, name = 'login'),
-    # path('/register', views.registerpage, name = 'register'),
+    path('', views.indexpage, name = 'indexpage'),
+    # do not write login as it'll override the default login page
+    path('login', views.loginpage, name = 'loginpage'),
+    # do not write logout as it'll override the default logout page
+    path('logout', views.logoutpage, name = 'logoutpage'),
 ]
