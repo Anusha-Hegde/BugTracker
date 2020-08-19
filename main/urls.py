@@ -20,8 +20,12 @@ app_name = 'main'
 
 urlpatterns = [
     path('', views.indexpage, name = 'indexpage'),
+
+    path('home', views.homepage, name = 'homepage'),
+
     # do not write name = login as it'll override the default login page
     path('login', views.loginpage, name = 'loginpage'),
+
     # do not write name = logout as it'll override the default logout page
     path('logout', views.logoutpage, name = 'logoutpage'),
 ]

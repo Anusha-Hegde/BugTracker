@@ -31,48 +31,172 @@
 
 </head>
 
-<body  data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <div class="site-wrap">
 
-  <div class="site-section animate">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-5">
-          <p>
-            <p align = "right">New User?
-              <input type="submit" value="Register" class="btn btn-primary btn-lg px-5" onclick="location.href = 'signup.html'">
-            </p>
-          <h2 align="left" class="mb-5 text-black"><strong>Log In</strong></h2>
-          
-
-          </p>
-
-          <div class="row">
-            <div class="col-md-12 form-group">
-              <label for="useremail">Username/Email</label>
-              <input type="email" id="useremail" class="form-control form-control-lg">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 form-group">
-              <label>Password</label>
-              <input type="password" id="password" class="form-control form-control-lg">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-12">
-              <input type="submit" align = "right" value="Login" class="btn btn-primary btn-lg px-5">
-
-            </div>
-          </div>
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
         </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
 
+    <header class="site-navbar py-4 site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <div style="font-weight: 900; font-size: 1.3rem;">
+            <span style="font-size: large; color: white;">BUG-TRACKER</span>
+          </div>
+          <div class="mr-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="active">
+                  <a href="{% url 'main:indexpage' %}" class="nav-link text-left">Home</a>
+                </li>
+
+                <li class="has-children">
+                  <a href="#" class="nav-link text-left">How It Works</a>
+                  <ul class="dropdown">
+                    <li><a href="yet to be done">Admin</a></li>
+                    <li><a href="yet to be done">Project Manager</a></li>
+                    <li><a href="yet to be done">Developer</a></li>
+                    <li><a href="yet to be done">Tester</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="##" class="nav-link text-left">About</a>
+                </li>
+
+                <li>
+                  <a href="###" class="nav-link text-left">Contact</a>
+                </li>
+              </ul>
+            </nav>
+
+          </div>
+          <div class="ml-auto">
+
+            <div class="social-wrap">
+              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">
+                <span class="icon-menu h3 text-white" style="position: relative; top: 7px;"></span>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
 
+    </header>
+
+    <div class="intro-section" style="background-image: url('static/images/hero_1.jpg');">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-7 mx-auto text-center" data-aos="fade-up">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div style="background-image: url('static/images/hero_1.jpg'); border: 3px solid whitesmoke">
+            <div class="align-items-center justify-content-center">
+              <h1>Login</h1>
+              <br>
+              <br>
+              <br>
+
+              <form method="POST" action="">
+                {% csrf_token %}
+                <table style="table-layout: fixed; border-collapse: separate;" align="center">
+                  <tr>
+                    <td colspan="3">
+                      <div style="color: red;">
+                        {% for i in messages %}
+                        <b><b>{{i}}</b></b>
+                        {% endfor %}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style="width: 50px;
+                        height: 50px;
+                        line-height: 50px;
+                        background: #f37121;
+                        color: #fff;
+                        font-size: 40px;
+                        margin-bottom: 20px;" class="icon-user">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label for="username"
+                            style="font-size: large; color: white; text-align: center;"><b><b><b>USERNAME</b></b></b></label>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          {{form.username}}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style="width: 50px;
+                        height: 50px;
+                        line-height: 50px;
+                        background: #f37121;
+                        color: #fff;
+                        font-size: 40px;
+                        margin-bottom: 20px;" class="icon-key">
+                      </div>
+            </div>
+            </td>
+            <td>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label for="password1"
+                    style="font-size: large; color: whitesmoke; text-align: center; "><b><b><b>PASSWORD</b></b></b></label>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  {{form.password1}}
+                </div>
+              </div>
+            </td>
+            </tr>
+
+            </table>
+            <div class="row">
+              <div class="col-12">
+                <input type="submit" value="Login" class="btn btn-primary btn-lg px-5">
+
+              </div>
+            </div>
+            <br>
+            <br>
+
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  </div>
 
-  
+
+
+
+
 
   <script src="static/js/jquery-3.3.1.min.js"></script>
   <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
