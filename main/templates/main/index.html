@@ -85,7 +85,6 @@
           <div class="ml-auto">
 
             <div class="social-wrap">
-              <!-- <a href="login.html" class="text-white">Sign In / Register</a> -->
 
 
               <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
@@ -106,7 +105,7 @@
               <tr>
                 <td style="text-align: center;">
                   <div class="step">
-                    <a href="{% url 'main:loginpage'%}" style="text-align: center;"><span class="wrap-icon icon-user"
+                    <a href="{% url 'main:loginpage' id=1 %}" style="text-align: center;"><span class="wrap-icon icon-user"
                         style="background-color: black;"></span></a>
                     <p style="color: black;text-align: center;"><b>Admin</b></p>
                   </div>
@@ -115,7 +114,7 @@
           <td style="text-align: center;">
             <!-- <div class="col-lg-3"> -->
             <div class="step">
-              <a href="{% url 'main:loginpage' %}"><span class="wrap-icon icon-user" style="background-color: lightcoral;"></span></a>
+              <a href="{% url 'main:loginpage' id=2 %}"><span class="wrap-icon icon-user" style="background-color: lightcoral;"></span></a>
               <p style="color: black; align-content: center;"><b>Program Manager</b></p>
             </div>
         </div>
@@ -126,7 +125,7 @@
           <td style="text-align: center;">
             <!-- <div class="col-lg-3"> -->
             <div class="step">
-              <a href="{% url 'main:loginpage' %}"><span class="wrap-icon icon-user" style="background-color: blueviolet;"></span></a>
+              <a href="{% url 'main:loginpage' id=3 %}"><span class="wrap-icon icon-user" style="background-color: blueviolet;"></span></a>
               <p style="color: black;"><b>Developer</b></p>
             </div>
       </div>
@@ -135,7 +134,7 @@
       <td style="text-align: center;">
         <!-- <div class="col-lg-3"> -->
         <div class="step">
-          <a href="{% url 'main:loginpage' %}"><span class="wrap-icon icon-user" style="background-color: goldenrod;"></span></a>
+          <a href="{% url 'main:loginpage' id=4 %}"><span class="wrap-icon icon-user" style="background-color: goldenrod;"></span></a>
           <p style="color: black;"><b>Tester</b></p>
 
         </div>
@@ -150,89 +149,7 @@
   </div>
 
 
-  <div class="site-section pt-0">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7 mb-5">
-          <span class="caption">How?</span>
-          <h2 class="text-black">How <strong>It Works</strong></h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="step">
-            <span class="wrap-icon icon-user" style="background-color: black;"></span>
-            <h3>Admin</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis ut
-              et iure.</p>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="step">
-            <span class="wrap-icon icon-user" style="background-color: lightcoral;"></span>
-            <h3>Program Manager</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis ut
-              et iure.</p>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="step">
-            <span class="wrap-icon icon-user" style="background-color: blueviolet;"></span>
-            <h3>Developer</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis ut
-              et iure.</p>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="step last">
-            <span class="wrap-icon icon-user" style="background-color: goldenrod;"></span>
-            <h3>Tester</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis ut
-              et iure.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="site-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-          <img src="static/images/hero_1.jpg" alt="Image" class="img-fluid">
-        </div>
-        <div class="col-lg-5 pl-lg-5">
-          <div class="mb-5">
-            <span class="caption">About?</span>
-            <h2 class="text-black">About <strong>Us</strong></h2>
-          </div>
-          <div class="d-flex feature-icon mb-3">
-            <span class="wrap-icon icon-paper-plane mr-2"></span>
-            <div>
-              <h3>Fast Support</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, debitis!</p>
-            </div>
-          </div>
-
-          <div class="d-flex feature-icon mb-3">
-            <span class="wrap-icon icon-smile-o mr-2"></span>
-            <div>
-              <h3>Happy Customers</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, debitis!</p>
-            </div>
-          </div>
-
-          <div class="d-flex feature-icon mb-3">
-            <span class="wrap-icon icon-support mr-2"></span>
-            <div>
-              <h3>24/7 Support</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, debitis!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
 
 

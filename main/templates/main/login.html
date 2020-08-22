@@ -33,7 +33,6 @@
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
   <div class="site-wrap">
-
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -54,33 +53,32 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active">
-                  <a href="{% url 'main:indexpage' %}" class="nav-link text-left">Home</a>
+                  <a href="{% url 'main:loginpage' %}" class="nav-link text-left">Home</a>
                 </li>
 
                 <li class="has-children">
-                  <a href="#" class="nav-link text-left">How It Works</a>
+                  <a href="#Works" class="nav-link text-left">How It Works</a>
                   <ul class="dropdown">
-                    <li><a href="yet to be done">Admin</a></li>
-                    <li><a href="yet to be done">Project Manager</a></li>
-                    <li><a href="yet to be done">Developer</a></li>
-                    <li><a href="yet to be done">Tester</a></li>
+                    <li><a href="#Works">Admin</a></li>
+                    <li><a href="#Works">Project Manager</a></li>
+                    <li><a href="#Works">Developer</a></li>
+                    <li><a href="#Works">Tester</a></li>
                   </ul>
                 </li>
                 <li>
-                  <a href="##" class="nav-link text-left">About</a>
+                  <a href="#About" class="nav-link text-left">About</a>
                 </li>
 
                 <li>
-                  <a href="###" class="nav-link text-left">Contact</a>
+                  <a href="#Contact" class="nav-link text-left">Contact</a>
                 </li>
               </ul>
             </nav>
-
           </div>
           <div class="ml-auto">
 
             <div class="social-wrap">
-              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">
+              <a href="" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">
                 <span class="icon-menu h3 text-white" style="position: relative; top: 7px;"></span>
               </a>
             </div>
@@ -88,27 +86,19 @@
 
         </div>
       </div>
-
     </header>
 
     <div class="intro-section" style="background-image: url('static/images/hero_1.jpg');">
       <div class="row align-items-center justify-content-center">
         <div class="col-md-7 mx-auto text-center" data-aos="fade-up">
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+          <br><br><br><br><br><br>
           <div style="background-image: url('static/images/hero_1.jpg'); border: 3px solid whitesmoke">
             <div class="align-items-center justify-content-center">
-              <h1>Login</h1>
-              <br>
-              <br>
-              <br>
+              <h1>Login</h1><br><br><br>
 
               <form method="POST" action="">
                 {% csrf_token %}
+
                 <table style="table-layout: fixed; border-collapse: separate;" align="center">
                   <tr>
                     <td colspan="3">
@@ -156,67 +146,209 @@
                         font-size: 40px;
                         margin-bottom: 20px;" class="icon-key">
                       </div>
-            </div>
-            </td>
-            <td>
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <label for="password1"
-                    style="font-size: large; color: whitesmoke; text-align: center; "><b><b><b>PASSWORD</b></b></b></label>
+                    </td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label for="password1"
+                            style="font-size: large; color: whitesmoke; text-align: center; "><b><b><b>PASSWORD</b></b></b></label>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          {{form.password1}}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+
+                <div class="row">
+                  <div class="col-12">
+                    <input type="submit" value="Login" class="btn btn-primary btn-lg px-5">
+
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td>
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  {{form.password1}}
-                </div>
-              </div>
-            </td>
-            </tr>
+                <br><br>
 
-            </table>
-            <div class="row">
-              <div class="col-12">
-                <input type="submit" value="Login" class="btn btn-primary btn-lg px-5">
-
-              </div>
+              </form>
             </div>
-            <br>
-            <br>
-
-            </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
+    <div id='Works'>
+      <div class="site-section pt-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 mb-5">
+              <span class="caption">How?</span>
+              <h2 class="text-black">How <strong>It Works</strong></h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="step">
+                <span class="wrap-icon icon-user" style="background-color: black;"></span>
+                <h3>Admin</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis
+                  ut
+                  et iure.</p>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="step">
+                <span class="wrap-icon icon-user" style="background-color: lightcoral;"></span>
+                <h3>Program Manager</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis
+                  ut
+                  et iure.</p>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="step">
+                <span class="wrap-icon icon-user" style="background-color: blueviolet;"></span>
+                <h3>Developer</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis
+                  ut
+                  et iure.</p>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="step last">
+                <span class="wrap-icon icon-user" style="background-color: goldenrod;"></span>
+                <h3>Tester</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis
+                  ut
+                  et iure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="About">
+      <div class="site-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <img src="static/images/hero_1.jpg" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-lg-5 pl-lg-5">
+              <div class="mb-5">
+                <span class="caption">About?</span>
+                <h2 class="text-black">About <strong>Us</strong></h2>
+              </div>
+              <div class="d-flex feature-icon mb-3">
+                <span class="wrap-icon icon-paper-plane mr-2"></span>
+                <div>
+                  <h3>Fast Support</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, debitis!</p>
+                </div>
+              </div>
+
+              <div class="d-flex feature-icon mb-3">
+                <span class="wrap-icon icon-smile-o mr-2"></span>
+                <div>
+                  <h3>Happy Customers</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, debitis!</p>
+                </div>
+              </div>
+
+              <div class="d-flex feature-icon mb-3">
+                <span class="wrap-icon icon-support mr-2"></span>
+                <div>
+                  <h3>24/7 Support</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, debitis!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="Contact">
+      <div class="site-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <h2 class="mb-5 text-black">Get <strong>In Touch</strong></h2>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label for="fname">First Name</label>
+                  <input type="text" id="fname" class="form-control form-control-lg">
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="lname">Last Name</label>
+                  <input type="text" id="lname" class="form-control form-control-lg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label for="eaddress">Email Address</label>
+                  <input type="text" id="eaddress" class="form-control form-control-lg">
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="tel">Tel. Number</label>
+                  <input type="text" id="tel" class="form-control form-control-lg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label for="message">Message</label>
+                  <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <input type="submit" value="Send Message" class="btn btn-primary btn-lg px-5">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5 ml-auto">
+              <div class="mb-3 bg-white">
+                <h3 class="mb-5 text-black">Contact Info</h3>
+                <p class="mb-0 font-weight-bold text-black">Address</p>
+                <p class="mb-4 text-black">203 Fake St. Mountain View, San Francisco, California, USA</p>
+
+                <p class="mb-0 font-weight-bold text-black">Phone</p>
+                <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+
+                <p class="mb-0 font-weight-bold text-black">Email Address</p>
+                <p class="mb-0"><a href="#">youremail@domain.com</a></p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
 
 
 
-  <script src="static/js/jquery-3.3.1.min.js"></script>
-  <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="static/js/jquery-ui.js"></script>
-  <script src="static/js/popper.min.js"></script>
-  <script src="static/js/bootstrap.min.js"></script>
-  <script src="static/js/owl.carousel.min.js"></script>
-  <script src="static/js/jquery.stellar.min.js"></script>
-  <script src="static/js/jquery.countdown.min.js"></script>
-  <script src="static/js/bootstrap-datepicker.min.js"></script>
-  <script src="static/js/jquery.easing.1.3.js"></script>
-  <script src="static/js/aos.js"></script>
-  <script src="static/js/jquery.fancybox.min.js"></script>
-  <script src="static/js/jquery.sticky.js"></script>
-  <script src="static/js/jquery.mb.YTPlayer.min.js"></script>
-
-
-
-
-  <script src="static/js/main.js"></script>
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="static/js/jquery-ui.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/owl.carousel.min.js"></script>
+    <script src="static/js/jquery.stellar.min.js"></script>
+    <script src="static/js/jquery.countdown.min.js"></script>
+    <script src="static/js/bootstrap-datepicker.min.js"></script>
+    <script src="static/js/jquery.easing.1.3.js"></script>
+    <script src="static/js/aos.js"></script>
+    <script src="static/js/jquery.fancybox.min.js"></script>
+    <script src="static/js/jquery.sticky.js"></script>
+    <script src="static/js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="static/js/main.js"></script>
 
 </body>
 
