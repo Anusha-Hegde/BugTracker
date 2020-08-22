@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated
 
-app_name = 'main'
+# app_name = 'main'
 
 
 
@@ -21,23 +21,8 @@ def loginpage(request):
         user = authenticate(request, username = username, password = password)
 
         if user:
-            group = list(user.groups.values_list('name',flat = True))
-
-            if 'Admin' in group:
-                login(request, user)
-                return redirect('main:adminpage')
-
-            elif 'Project Manager' in group:
-                login(request, user)
-                return redirect('main:pmpage')
-            
-            elif 'Developer' in group:
-                login(request, user)
-                return redirect('main:devpage')
-
-            elif 'Tester' in group:
-                login(request, user)
-                return redirect('main:testerpage')
+            login(request, user)
+            return redirect('main:indexpage')
 
         messages.info(request, 'username or password incorrect')
         return redirect('main:loginpage')
@@ -54,21 +39,15 @@ def logoutpage(request):
 
 
 # login_required makes sure user is logged in before viewing the following templates
-
 @login_required(login_url='main:loginpage')
+def indexpage(request):
+    group = list(request.user.groups.values_list('name',flat = True))
+    return render(request, 'main/index.html', context={'group':group})
+
+
 def adminpage(request):
     return render(request, 'main/admin.html')
 
-@login_required(login_url='main:loginpage')
-def pmpage(request):
-    return render(request, 'main/pm.html')
 
-@login_required(login_url='main:loginpage')
-def devpage(request):
-    return render(request, 'main/dev.html')
-
-@login_required(login_url='main:loginpage')
-def testerpage(request):
-    return render(request, 'main/tester.html')
-
-# , context={'user':request.user}
+def anypage(request):
+    return render(request, 'main:any.html')
