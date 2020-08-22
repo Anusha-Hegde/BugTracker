@@ -1,14 +1,39 @@
-Hello {{user.username}}
-<br>
-You are 
-{% for i in group%}
-{{i}}
-{% endfor %}
-<p>This button is enabled only for the admin</p>
-{% if 'Admin' in group %}
-<input type="button" name="upload" class="btn btn-primary" value="Admin" onclick="location.href = 'main:adminpage'"/>
-{% else %}
-<input type="button" name="upload" class="btn btn-primary" value="Admin" disabled/>
-{% endif %}
-<p>While this button is enabled for anybody</p>
-<input type="button" name="upload" class="btn btn-primary" value="Anybody" onclick = "location.href = 'main:anypage'"/>
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+    Hello {{user.username}}
+    <br>
+    You are
+    {% for i in group%}
+    {{i}}
+    {% endfor %}
+    <p>This button is enabled only for the admin</p>
+    {% if 'Admin' in group %}
+    <button class="btn btn-primary" id="click1">Admin</button>
+    {% else %}
+    <button class="btn btn-primary" id="click1" disabled>Admin</button>
+    {% endif %}
+    <p>While this button is enabled for anybody</p>
+    <button class="btn btn-primary" id="click2">Anybody</button>
+
+
+
+    <script type="text/javascript">
+        document.getElementById("click1").onclick = function () {
+            alert('check2 clicked');
+            location.href = "{% url 'main:adminpage' %}";
+        };
+
+        document.getElementById("click2").onclick = function () {
+            alert('check1 clicked');
+            var url = "{% url 'main:anypage' %}";
+            location.href = url;
+        };
+    </script>
+
+</body>
+
+</html>

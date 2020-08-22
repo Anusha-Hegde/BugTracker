@@ -26,7 +26,7 @@ urlpatterns = [
 
     path('index', views.indexpage, name = 'indexpage'),
 
-    path('admin', views.adminpage, name = 'adminpage'),
+    path('adminpage', views.adminpage, name = 'adminpage'),
 
-    path('anybody', views.anypage, name = 'anypage')
+    path('anypage', views.anypage, name = 'anypage')
 ]

@@ -6,7 +6,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated
 
-# app_name = 'main'
 
 
 
@@ -45,9 +44,11 @@ def indexpage(request):
     return render(request, 'main/index.html', context={'group':group})
 
 
+@login_required(login_url='main:loginpage')
 def adminpage(request):
     return render(request, 'main/admin.html')
 
 
+@login_required(login_url='main:loginpage')
 def anypage(request):
-    return render(request, 'main:any.html')
+    return render(request, 'main/any.html')
