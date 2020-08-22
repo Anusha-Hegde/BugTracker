@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .decorators import unauthenticated
+from .decorators import unauthenticated, allowed_users
 
 
 
@@ -45,6 +45,7 @@ def indexpage(request):
 
 
 @login_required(login_url='main:loginpage')
+@allowed_users(allowed_roles=['Admin'])
 def adminpage(request):
     return render(request, 'main/admin.html')
 
