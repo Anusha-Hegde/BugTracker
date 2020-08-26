@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated, allowed_users
 
+from .models import Project, Issue
+
 
 
 
@@ -30,7 +32,9 @@ def loginpage(request):
     form = UserCreationForm()
     return render(request, 'main/login.html', context={'form':form})
 
-    
+
+def homepage(request):
+    return render(request, 'main/check.html', context={'pro':Project.objects.all(), 'iss':Issue.objects.all()}) 
 
 def logoutpage(request):
     logout(request)

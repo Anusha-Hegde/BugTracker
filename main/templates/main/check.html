@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>homepage</title>
+</head>
+
+<body>
+    <h1>Project here</h1>
+    {% for i in pro %}
+
+    <p>
+        Project ID = {{i.id}}
+    </p>
+    <p>
+        Project Name = {{i.name}}
+    </p>
+    <p>
+        Description = {{i.desc}}
+    </p>
+
+    {% endfor %}
+
+<h1>Issues here</h1>
+    {% for i in iss %}
+
+    <p>
+        Issue Title = {{i.title}}
+    </p>
+    <p>
+        Description = {{i.desc}}
+    </p>
+    <p>
+        Project ID= {{i.proj_id}}
+    </p>
+
+    {% endfor %}
+</body>
+
+</html>
