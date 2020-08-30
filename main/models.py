@@ -8,6 +8,32 @@ class Tag(models.Model):
     def __str__(self):
         return self.name 
 
+# class Feature(models.Model):
+#     name = models.CharField(max_length=30)
+
+#     def __str__(self):
+#         return self.name
+
+priority = [
+    ('critical', 'critical'),
+    ('high', 'high'),
+    ('normal', 'normal'),
+    ('low', 'low')
+]
+
+status = [
+    ('open', 'open'),
+    ('in progress', 'in progress'),
+    ('resolved', 'resolved'),
+    ('closed', 'closed'),
+    ('duplicate', 'duplicate')
+]
+
+
+
+
+########################## Major models ############
+
 class Project(models.Model):
     name = models.CharField(max_length=50)
     desc = models.CharField(max_length=250)
@@ -21,18 +47,22 @@ class Project(models.Model):
         return self.name
 
 
+
 class Issue(models.Model):
     title = models.CharField(max_length=30)
     desc = models.CharField(max_length=30)
-    user = models.ForeignKey(User, to_field='id', on_delete=models.SET_DEFAULT, default = 1) #default pointing to anonymous user
+    creator = models.ForeignKey(User, to_field='id', on_delete=models.SET_DEFAULT, default = 1, related_name='creator') #default must point to anonymous user
+    assignee = models.ForeignKey(User, to_field='id', on_delete=models.SET_DEFAULT, default = 1, related_name='assignee') #default must point to admin/project manager
+    opened = models.DateField(default=datetime.date.today())
+    closed = models.DateField(null = True, blank = True)
     project = models.ForeignKey(Project, to_field='id', on_delete=models.CASCADE)
-    category = models.CharField(max_length=30)
-    priority = models.CharField(max_length=30)
-    is_open = models.BooleanField(default=True)
+    priority = models.CharField(max_length=30, choices=priority, default='low')
+    status = models.CharField(max_length=30, choices=status, default='open')
     tags = models.ManyToManyField(Tag)
     
     def __str__(self):
         return self.title
+
 
 
 class Thread(models.Model):
@@ -40,6 +70,7 @@ class Thread(models.Model):
     issue = models.ForeignKey(Issue, to_field='id', on_delete=models.CASCADE)
     comment = models.CharField(max_length=250)
     upvote = models.IntegerField(default=0)
+
 
 
 class ProjectMember(models.Model):
