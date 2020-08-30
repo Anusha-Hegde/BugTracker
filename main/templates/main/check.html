@@ -5,35 +5,47 @@
 </head>
 
 <body>
-    <h1>Project here</h1>
+
     {% for i in pro %}
+        <h1>Project {{i.id}}</h1>
 
-    <p>
-        Project ID = {{i.id}}
-    </p>
-    <p>
-        Project Name = {{i.name}}
-    </p>
-    <p>
-        Description = {{i.desc}}
-    </p>
+        <p>
+            Project Name = {{i.name}}
+        </p>
+        <p>
+            Description = {{i.desc}}
+        </p>
+        <h2>Project Issues</h2>
+        {% for j in iss %}
+            {% if j.project_id == i.id%}
+                <p>
+                    Issue Title = {{j.title}}
+                </p>
+                <p>
+                    Description = {{j.desc}}
+                </p>
+                <p>
+                    Is Open?
+                    {% if j.is_open %}
+                    YESS
+                    {% else %}
+                    NOPE
+                    {% endif %}
+                </p>
+                <p>
+                    {% for k in j.tags.all %}
+                    Tags:
+                    {{ k }}
+                    {% endfor %}
+                </p>
+            {% endif %}
+        {% endfor %}
+        <!-- {% if not flag %}
+            <p>Nothing to display</p>
+        {% endif %} -->
 
     {% endfor %}
 
-<h1>Issues here</h1>
-    {% for i in iss %}
-
-    <p>
-        Issue Title = {{i.title}}
-    </p>
-    <p>
-        Description = {{i.desc}}
-    </p>
-    <p>
-        Project ID= {{i.proj_id}}
-    </p>
-
-    {% endfor %}
 </body>
 
 </html>
