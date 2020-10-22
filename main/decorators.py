@@ -5,7 +5,7 @@ def unauthenticated(view_func):
     def wrapper(request, *args, **kwargs):
 
         if request.user.is_authenticated:
-            return redirect('main:indexpage')
+            return redirect('main:projects')
         
         return view_func(request, *args, **kwargs)
 
@@ -15,14 +15,15 @@ def unauthenticated(view_func):
 def allowed_users(allowed_roles = []):
     def decorator(view_func):
         def wrapper(request, *args, **kwargs):
-            if request.user.groups.exists():
-                group = list(request.user.groups.values_list('name',flat = True))
 
             flag = False
-            for i in group:
-                if i in allowed_roles:
-                    flag = True
-                    break
+
+            if request.user.groups.exists():
+                group = list(request.user.groups.values_list('name',flat = True))
+                for i in group:
+                    if i in allowed_roles:
+                        flag = True
+                        break 
             
             if flag:
                 return view_func(request, *args, **kwargs)

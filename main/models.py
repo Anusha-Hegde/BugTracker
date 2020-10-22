@@ -53,6 +53,7 @@ class Issue(models.Model):
     desc = models.CharField(max_length=30)
     creator = models.ForeignKey(User, to_field='id', on_delete=models.SET_DEFAULT, default = 1, related_name='creator') #default must point to anonymous user
     assignee = models.ForeignKey(User, to_field='id', on_delete=models.SET_DEFAULT, default = 1, related_name='assignee') #default must point to admin/project manager
+    # source = models.CharField(max_length=250, default='')
     opened = models.DateField(default=datetime.date.today())
     closed = models.DateField(null = True, blank = True)
     project = models.ForeignKey(Project, to_field='id', on_delete=models.CASCADE)
@@ -69,7 +70,8 @@ class Thread(models.Model):
     user = models.ForeignKey(User, to_field='id', on_delete=models.SET_DEFAULT, default = 1)
     issue = models.ForeignKey(Issue, to_field='id', on_delete=models.CASCADE)
     comment = models.CharField(max_length=250)
-    upvote = models.IntegerField(default=0)
+    votes = models.IntegerField(default=0)
+    thread = models.ForeignKey('self', related_name='child', to_field='id', on_delete=models.CASCADE, null = True, blank = True)
 
 
 

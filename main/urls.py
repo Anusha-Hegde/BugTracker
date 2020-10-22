@@ -24,11 +24,7 @@ urlpatterns = [
     # do not write name = logout as it'll override the default logout page
     path('logout', views.logoutpage, name = 'logoutpage'),
 
-    path('index', views.indexpage, name = 'indexpage'),
+    # path('issues', views.issues, name = 'issues'),
 
-    path('adminpage', views.adminpage, name = 'adminpage'),
-
-    path('anypage', views.anypage, name = 'anypage'),
-
-    path('homepage', views.homepage, name = 'homepage')
+    path('projects<int:id>', views.projects, name = 'projects')
 ]

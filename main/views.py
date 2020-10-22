@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated, allowed_users
 
-from .models import Project, Issue
+from .models import Project, Issue, Thread, ProjectMember
 
 
 
@@ -23,7 +23,7 @@ def loginpage(request):
 
         if user:
             login(request, user)
-            return redirect('main:indexpage')
+            return redirect('main:projects')
 
         messages.info(request, 'username or password incorrect')
         return redirect('main:loginpage')
@@ -33,27 +33,17 @@ def loginpage(request):
     return render(request, 'main/login.html', context={'form':form})
 
 
-def homepage(request):
-    return render(request, 'main/check.html', context={'pro':Project.objects.all(), 'iss':Issue.objects.all()}) 
-
-def logoutpage(request):
-    logout(request)
-    return redirect('main:loginpage')
 
 
 # login_required makes sure user is logged in before viewing the following templates
 @login_required(login_url='main:loginpage')
-def indexpage(request):
-    group = list(request.user.groups.values_list('name',flat = True))
-    return render(request, 'main/index.html', context={'group':group})
-
-
-@login_required(login_url='main:loginpage')
 @allowed_users(allowed_roles=['Admin'])
-def adminpage(request):
-    return render(request, 'main/admin.html')
+def projects(request):
+    return render(request, 'main/projects.html', context={'projects':Project.objects.all(), 'pro_mem':ProjectMember.objects.all()})
 
 
-@login_required(login_url='main:loginpage')
-def anypage(request):
-    return render(request, 'main/any.html')
+
+
+def logoutpage(request):
+    logout(request)
+    return redirect('main:loginpage')
