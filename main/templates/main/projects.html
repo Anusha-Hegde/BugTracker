@@ -1,3 +1,5 @@
+{% load static from static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,30 +10,64 @@
 
 
   <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
-  <link rel="stylesheet" href="static/fonts/icomoon/style.css">
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
 
-  <link rel="stylesheet" href="static/css/bootstrap.min.css">
-  <link rel="stylesheet" href="static/css/jquery-ui.css">
-  <link rel="stylesheet" href="static/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 
-  <link rel="stylesheet" href="static/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
 
-  <link rel="stylesheet" href="static/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
 
-  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
 
-  <link rel="stylesheet" href="static/css/aos.css">
-  <link href="static/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+  <link href="{% static 'css/jquery.mb.YTPlayer.min.css' %}" media="all" rel="stylesheet" type="text/css">
 
-  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <style>
+    .topnav {
+      overflow: hidden;
+      background-color: #e9f173;
+    }
+
+    .topnav a {
+      float: left;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #35c1f8;
+      color: white;
+    }
+  </style>
 
 
 
 </head>
 
+
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="topnav">
+    <a class="active" href="{% url 'main:issues' %}">Home</a>
+    <a href="{% url 'main:add_issues' %}">New Issue</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
 
   <div class="site-wrap">
 
@@ -53,222 +89,57 @@
         <div class="row">
           <div class="col-md-3">
             <div class="side-box mb-5">
-              <h3>Categories</h3>
+              <h3>All Projects</h3>
+              {% for i in projects.all %}
               <ul class="list-unstyled auction-categories">
-                <li><a href="#">Shoes <span>2109</span></a></li>
-                <li><a href="#">Electronics <span>102</span></a></li>
-                <li><a href="#">Clothing <span>392</span></a></li>
-                <li><a href="#">Watches <span>291</span></a></li>
-                <li><a href="#">Accessories <span>391</span></a></li>
+                <li><a href="#">Name : <span>{{i.name}}</span></a></li>
               </ul>
+              {% endfor %}
             </div>
             <div class="side-box">
-              <h3>Recent Bidders</h3>
-              <ul class="list-unstyled bidders">
-                <li class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">1.</span>
-                    <div class="d-flex align-items-center">
-                      <span>Jean Smith</span>
-                    </div>
-                  </div>
-                  <span class="price">$40</span>
-                </li>
-
-                <li class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">2.</span>
-                    <div class="d-flex align-items-center">
-                      <span>Chris Wilson</span>
-                    </div>
-                  </div>
-                  <span class="price">$87</span>
-                </li>
-
-
-                <li class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">3.</span>
-                    <div class="d-flex align-items-center">
-                      <span>Kyle Anderson</span>
-                    </div>
-                  </div>
-                  <span class="price">$310</span>
-                </li>
-
-                <li class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">1.</span>
-                    <div class="d-flex align-items-center">
-                      <span>Jean Smith</span>
-                    </div>
-                  </div>
-                  <span class="price">$40</span>
-                </li>
-
-                <li class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">2.</span>
-                    <div class="d-flex align-items-center">
-                      <span>Chris Wilson</span>
-                    </div>
-                  </div>
-                  <span class="price">$87</span>
-                </li>
-
-
-                <li class="d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">3.</span>
-                    <div class="d-flex align-items-center">
-                      <span>Kyle Anderson</span>
-                    </div>
-                  </div>
-                  <span class="price">$310</span>
-                </li>
-
-              </ul>
+              <h3>Core Project Members</h3>
             </div>
+            <ul class="list-unstyled bidders">
+              {% for i in users.all %}
+              {% if i.username != "admin" %}
+              <li class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <div class="d-flex align-items-center">
+                    <span>{{i.first_name}} {{i.last_name}}</span>
+                  </div>
+                </div>
+                <span class="price">({{i.groups.first}})</span>
+              </li>
+              {% endif %}
+              {% endfor %}
+
+            </ul>
           </div>
           <div class="col-md-9">
             <div class="row auctions-entry">
 
 
+              {% for i in pro_mem.all %}
+              {% if user.id == i.user.id %}
               <div class="col-6 col-md-4 col-lg-4">
                 <div class="item">
                   <div>
-                    <a href="item-single.html"><img src="images/product_1.jpg" alt="Image" class="img-fluid"></a>
+                    <a href="{% url 'main:issue' i.project.id %}"><img src="static/images/images.png" alt="Image"
+                        class="img-fluid"></a>
                   </div>
                   <div class="p-4">
-                    <h3><a href="item-single.html">Project Name</a></h3>
+                    <h3><a href="item-single.html">Name : {{i.project.name}}</a></h3>
                     <div class="d-flex mb-2">
-                      <span>Pro Man name</span>
-                      <span class="ml-auto">No. of issues</span>
+                      <span>Managed By : {{i.project.project_manager.first_name}}
+                        {{i.project.project_manager.last_name}}</span>
                     </div>
-                    <a href="item-single.html" class="btn btn-bid">Open Issues</a>
+                    <span>Issues Open : {{i.project.issues_open}} </span>
                   </div>
 
                 </div>
               </div>
-
-              <div class="col-6 col-md-4 col-lg-4">
-                <div class="item">
-                  <div>
-                    <a href="item-single.html"><img src="images/product_1.jpg" alt="Image" class="img-fluid"></a>
-                  </div>
-                  <div class="p-4">
-                    <h3><a href="item-single.html">Project Name</a></h3>
-                    <div class="d-flex mb-2">
-                      <span>Pro Man name</span>
-                      <span class="ml-auto">No. of issues</span>
-                    </div>
-                    <a href="item-single.html" class="btn btn-bid">Open Issues</a>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-6 col-md-4 col-lg-4">
-                <div class="item">
-                  <div>
-                    <a href="item-single.html"><img src="images/product_1.jpg" alt="Image" class="img-fluid"></a>
-                  </div>
-                  <div class="p-4">
-                    <h3><a href="item-single.html">Project Name</a></h3>
-                    <div class="d-flex mb-2">
-                      <span>Pro Man name</span>
-                      <span class="ml-auto">No. of issues</span>
-                    </div>
-                    <a href="item-single.html" class="btn btn-bid">Open Issues</a>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-6 col-md-4 col-lg-4">
-                <div class="item">
-                  <div>
-                    <a href="item-single.html"><img src="images/product_1.jpg" alt="Image" class="img-fluid"></a>
-                  </div>
-                  <div class="p-4">
-                    <h3><a href="item-single.html">Project Name</a></h3>
-                    <div class="d-flex mb-2">
-                      <span>Pro Man name</span>
-                      <span class="ml-auto">No. of issues</span>
-                    </div>
-                    <a href="item-single.html" class="btn btn-bid">Open Issues</a>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-6 col-md-4 col-lg-4">
-                <div class="item">
-                  <div>
-                    <a href="item-single.html"><img src="images/product_1.jpg" alt="Image" class="img-fluid"></a>
-                  </div>
-                  <div class="p-4">
-                    <h3><a href="item-single.html">Project Name</a></h3>
-                    <div class="d-flex mb-2">
-                      <span>Pro Man name</span>
-                      <span class="ml-auto">No. of issues</span>
-                    </div>
-                    <a href="item-single.html" class="btn btn-bid">Open Issues</a>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-6 col-md-4 col-lg-4">
-                <div class="item">
-                  <div>
-                    <a href="item-single.html"><img src="images/product_1.jpg" alt="Image" class="img-fluid"></a>
-                  </div>
-                  <div class="p-4">
-                    <h3><a href="item-single.html">Project Name</a></h3>
-                    <div class="d-flex mb-2">
-                      <span>Pro Man name</span>
-                      <span class="ml-auto">No. of issues</span>
-                    </div>
-                    <a href="item-single.html" class="btn btn-bid">Open Issues</a>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-6 col-md-4 col-lg-4">
-                <div class="item">
-                  <div>
-                    <a href="item-single.html"><img src="images/product_1.jpg" alt="Image" class="img-fluid"></a>
-                  </div>
-                  <div class="p-4">
-                    <h3><a href="item-single.html">Project Name</a></h3>
-                    <div class="d-flex mb-2">
-                      <span>Pro Man name</span>
-                      <span class="ml-auto">No. of issues</span>
-                    </div>
-                    <a href="item-single.html" class="btn btn-bid">Open Issues</a>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-6 col-md-4 col-lg-4">
-                <div class="item">
-                  <div>
-                    <a href="item-single.html"><img src="images/product_1.jpg" alt="Image" class="img-fluid"></a>
-                  </div>
-                  <div class="p-4">
-                    <h3><a href="item-single.html">Project Name</a></h3>
-                    <div class="d-flex mb-2">
-                      <span>Pro Man name</span>
-                      <span class="ml-auto">No. of issues</span>
-                    </div>
-                    <a href="item-single.html" class="btn btn-bid">Open Issues</a>
-                  </div>
-
-                </div>
-              </div>
+              {% endif %}
+              {% endfor %}
 
             </div>
           </div>
@@ -292,49 +163,9 @@
 
       </div>
 
-      
 
-      <div class="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-3">
-              <p class="mb-4"><b><b><b>BugTracker</b></b></b></p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>
-              <p><a href="#">Learn More</a></p>
-            </div>
-            <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Solutions</span></h3>
-              <ul class="list-unstyled">
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Buy</a></li>
-                <li><a href="#">Sell</a></li>
-                <li><a href="#">Submit a bid</a></li>
-              </ul>
-            </div>
-            <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Services</span></h3>
-              <ul class="list-unstyled">
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Buy</a></li>
-                <li><a href="#">Sell</a></li>
-                <li><a href="#">Submit a bid</a></li>
-              </ul>
-            </div>
-            <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Contact</span></h3>
-              <ul class="list-unstyled">
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Support Community</a></li>
-                <li><a href="#">Press</a></li>
-                <li><a href="#">Share Your Story</a></li>
-                <li><a href="#">Our Supporters</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
 
 
     </div>

@@ -54,7 +54,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #e9f173;
+            background-color: #9bec93;
             min-width: 200px;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             padding: 5px 6px;
@@ -89,7 +89,9 @@
                     <div class="dropdown">
                         <span>Title</span>
                         <div class="dropdown-content">
-                            <p>Filter</p>
+                            <p><a href="">Filter based on alphabets</a></p>
+                            <p><a href="">Filter based on dates</a></p>
+                            <p><a href="">Filter based on priority</a></p>
                         </div>
                     </div>
                 </th>
@@ -97,7 +99,9 @@
                     <div class="dropdown">
                         <span>Description</span>
                         <div class="dropdown-content">
-                            <p>Filter</p>
+                            <p><a href="">Filter based on alphabets</a></p>
+                            <p><a href="">Filter based on dates</a></p>
+                            <p><a href="">Filter based on priority</a></p>
                         </div>
                     </div>
                 </th>
@@ -105,7 +109,9 @@
                     <div class="dropdown">
                         <span>Created By</span>
                         <div class="dropdown-content">
-                            <p>Filter</p>
+                            <p><a href="">Filter based on alphabets</a></p>
+                            <p><a href="">Filter based on dates</a></p>
+                            <p><a href="">Filter based on priority</a></p>
                         </div>
                     </div>
                 </th>
@@ -113,7 +119,9 @@
                     <div class="dropdown">
                         <span>Date of Creation</span>
                         <div class="dropdown-content">
-                            <p>Filter</p>
+                            <p><a href="">Filter based on alphabets</a></p>
+                            <p><a href="">Filter based on dates</a></p>
+                            <p><a href="">Filter based on priority</a></p>
                         </div>
                     </div>
                 </th>
@@ -121,7 +129,9 @@
                     <div class="dropdown">
                         <span>Priority</span>
                         <div class="dropdown-content">
-                            <p>Filter</p>
+                            <p><a href="">Filter based on alphabets</a></p>
+                            <p><a href="">Filter based on dates</a></p>
+                            <p><a href="">Filter based on priority</a></p>
                         </div>
                     </div>
                 </th>
@@ -129,7 +139,9 @@
                     <div class="dropdown">
                         <span>Status</span>
                         <div class="dropdown-content">
-                            <p>Filter</p>
+                            <p><a href="">Filter based on alphabets</a></p>
+                            <p><a href="">Filter based on dates</a></p>
+                            <p><a href="">Filter based on priority</a></p>
                         </div>
                     </div>
                 </th>
@@ -137,7 +149,9 @@
                     <div class="dropdown">
                         <span>Tags</span>
                         <div class="dropdown-content">
-                            <p>Filter</p>
+                            <p><a href="">Filter based on alphabets</a></p>
+                            <p><a href="">Filter based on dates</a></p>
+                            <p><a href="">Filter based on priority</a></p>
                         </div>
                     </div>
                 </th>
@@ -145,7 +159,9 @@
                     <div class="dropdown">
                         <span>Comment</span>
                         <div class="dropdown-content">
-                            <p>Filter</p>
+                            <p><a href="">Filter based on alphabets</a></p>
+                            <p><a href="">Filter based on dates</a></p>
+                            <p><a href="">Filter based on priority</a></p>
                         </div>
                     </div>
                 </th>
@@ -153,15 +169,9 @@
                     <div class="dropdown">
                         <span>Assigned To</span>
                         <div class="dropdown-content">
-                            <p>Filter</p>
-                        </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="dropdown">
-                        <span>Project</span>
-                        <div class="dropdown-content">
-                            <p>Filter</p>
+                            <p><a href="">Filter based on alphabets</a></p>
+                            <p><a href="">Filter based on dates</a></p>
+                            <p><a href="">Filter based on priority</a></p>
                         </div>
                     </div>
                 </th>
@@ -169,6 +179,7 @@
         </thead>
         <tbody>
             {% for i in issues.all %}
+            {% if project_id == i.project.id %}
             <tr>
                 <td>{{i.title}}</td>
                 <td>{{i.desc}}</td>
@@ -183,9 +194,90 @@
                 </td>
                 <td>{{i.comment}}</td>
                 <td>{{i.assignee.first_name}} {{i.assignee.last_name}}</td>
-                <td>{{i.project.name}}</td>
             </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<h1>PROJECT DETAILS</h1>
+<div class="table-scroll">
+    <table>
+        <thead class="thead-row">
+            <tr>
+                <th>
+                    <div class="dropdown">
+                        <span>Title</span>
+                        <div class="dropdown-content">
+                            <p><a href="">Get Details</a></p>
+                            <p><a href="">Report</a></p>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <span>Description</span>
+                </th>
+                <th>
+                    <span>Start Date</span>
+                </th>
+                <th>
+                    <span>Issues Open</span>
+                </th>
+                <th>
+                    <div class="dropdown">
+                        <span>Project Manager</span>
+                        <div class="dropdown-content">
+                            <p><a href="">Get Details</a></p>
+                            <p><a href="">Report</a></p>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <span>Core Members</span>
+                    <div class="dropdown-content">
+                        <p><a href="">Get Details</a></p>
+                        <p><a href="">Report</a></p>
+                    </div>
+</div>
+</th>
+
+</tr>
+</thead>
+<tbody>
+    {% for i in projects.all %}
+    {% if i.id == project_id %}
+    <tr>
+        <td>{{i.name}}</td>
+        <td>{{i.desc}}</td>
+        <td>{{i.start}}</td>
+        <td>{{i.issues_open}}</td>
+        <td>{{i.project_manager.first_name}} {{i.project_manager.last_name}} </td>
+        <td>
+            {% for j in pro_mem.all %}
+            <div class="dropdown">
+                {% if i.id == j.project.id %}
+                {{j.user.first_name}} {{j.user.last_name}}
+                {% endif %}
+                <div class="dropdown-content">
+                    <p><a href="">Get Details</a></p>
+                    <p><a href="">Report</a></p>
+                </div>
+            </div><br>
+            {% endfor %}
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</tbody>
+</table>
 </div>

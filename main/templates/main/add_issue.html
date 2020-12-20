@@ -1,0 +1,226 @@
+<header>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        thead {
+            background-color: #a3daf0;
+            height: 7ch;
+        }
+
+        td,
+        th {
+            border: 5px solid #7866e0;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #e9f173;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 5px 6px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        h1 {
+            color: #302091;
+        }
+    </style>
+
+</header>
+<h1>Open An ISSUE</h1>
+<div class="table-scroll">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Title</span>
+                            <div class="dropdown-content">
+                                <p>Add Issue Title.....Example: UI flaw</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="text" name="title" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Description</span>
+                            <div class="dropdown-content">
+                                <p>Add Issue Description.....Example: Image capture flaw in slide 3</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <textarea cols="35" rows="8" name="desc"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Creator</span>
+                            <div class="dropdown-content">
+                                <p>Add Your Name.....Example: Anusha Hegde</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select name="creator" id="creator">
+                            {% for i in users.all %}
+                            {% if i.username != "admin" %}
+                            <option value={{i.id}}>{{i.first_name}} {{i.last_name}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Assigned To</span>
+                            <div class="dropdown-content">
+                                <p>Who is the Issue Assigned to?.....Example: Avinash Rath</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select name="assignee" id="assignee">
+                            {% for i in users.all %}
+                            {% if i.username != "admin" %}
+                            <option value={{i.id}}>{{i.first_name}} {{i.last_name}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Date of Creation</span>
+                            <div class="dropdown-content">
+                                <p>Add a relevant date</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="date" name="opened" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Priority</span>
+                            <div class="dropdown-content">
+                                <p>Choose from the given priorities</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select name="priority" id="priority">
+                            <option value="critical">critical</option>
+                            <option value="high">high</option>
+                            <option value="normal">normal</option>
+                            <option value="low">low</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Status</span>
+                            <div class="dropdown-content">
+                                <p>Status by default is open</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select name="status" id="status">
+                            <option value="open">open</option>
+                            <option value="closed">closed</option>
+                            <option value="in progress">in progress</option>
+                            <option value="resolved">resolved</option>
+                            <option value="duplicate">duplicate</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Comment</span>
+                            <div class="dropdown-content">
+                                <p>Add all the details and attachments</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <textarea rows="8" cols="35" name="comment"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Tags</span>
+                            <div class="dropdown-content">
+                                <p>Choose form the Tags provided</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select name="tags" id="tags">
+                            {% for i in tags.all %}
+                            <option value="{{i.name}}">{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <span>Project Name</span>
+                            <div class="dropdown-content">
+                                <p>Choose the project for the issue</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <select name="project" id="project">
+                            {% for i in projects.all %}
+                            <option value="{{i.id}}">{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+        <table>
+            <thead>
+                <tr aria-rowspan="4" style = "height: '200ch';">
+                    <td style = "text-align: center; height: '200ch'; background-color: #a3daf0;">
+                        <button type="submit" style="color: red; width: 100ch; font-size: large; background-color: burlywood;">CREATE</button>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </form>
+
+</div>
