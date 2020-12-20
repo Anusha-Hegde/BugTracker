@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated, allowed_users
 
-from .models import Project, Issue, Thread, ProjectMember
+from .models import Project, Issue, ProjectMember
 
 
 
