@@ -141,6 +141,28 @@
               {% endif %}
               {% endfor %}
 
+              {% if user.username == "admin" %}
+              {% for i in projects.all %}
+              <div class="col-6 col-md-4 col-lg-4">
+                <div class="item">
+                  <div>
+                    <a href="{% url 'main:issue' i.id %}"><img src="static/images/images.png" alt="Image"
+                        class="img-fluid"></a>
+                  </div>
+                  <div class="p-4">
+                    <h3><a href="item-single.html">Name : {{i.name}}</a></h3>
+                    <div class="d-flex mb-2">
+                      <span>Managed By : {{i.project_manager.first_name}}
+                        {{i.project_manager.last_name}}</span>
+                    </div>
+                    <span>Issues Open : {{i.issues_open}} </span>
+                  </div>
+
+                </div>
+              </div>
+              {% endfor %}
+              {% endif %}
+
             </div>
           </div>
         </div>

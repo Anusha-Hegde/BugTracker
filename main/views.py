@@ -49,6 +49,7 @@ def projects(request):
 
 
 @login_required(login_url='main:loginpage')
+@allowed_users(allowed_roles=['Developer', 'Project Manager'])
 def issue(request, project_id):
     return render(request, 'main/issue.html', context={'projects': Project.objects.all(), 'pro_mem': ProjectMember.objects.all(), 'issues': Issue.objects.all(), 'project_id': project_id, 'users': User.objects.all()})
 
@@ -70,8 +71,12 @@ def add_issues(request):
         issue.priority = request.POST.get('priority')
         issue.status = request.POST.get('status')
         issue.comment = request.POST.get('comment')
-        # issue.closed = request.POST.get('closed')
         issue.project = Project.objects.get(id = request.POST.get('project'))
+
+        project = Project.objects.get(id = issue.project.id)
+        project.issues_open += 1
+        project.total_issues += 1
+        project.save()
             
         issue.save()
         issue.tags.add(Tag.objects.get(name = request.POST.get('tags')))

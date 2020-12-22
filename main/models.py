@@ -51,7 +51,7 @@ class Project(models.Model):
 
 class Issue(models.Model):
     title = models.CharField(max_length=30)
-    desc = models.CharField(max_length=30)
+    desc = models.CharField(max_length=300)
     creator = models.ForeignKey(User, to_field='id', on_delete=models.SET_DEFAULT, default = 1, related_name='creator') #default must point to anonymous user
     assignee = models.ForeignKey(User, to_field='id', on_delete=models.SET_DEFAULT, default = 1, related_name='assignee') #default must point to admin/project manager
     opened = models.DateField(default=datetime.date.today())
