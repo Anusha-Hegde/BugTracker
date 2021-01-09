@@ -25,7 +25,7 @@ SECRET_KEY = 'i4de@r%v$%(1$8h7r@imoy89j4ye&^h@8licjd%nee8m@ud=+z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://bugtracker-env.eba-s6bgjgh8.ap-south-1.elasticbeanstalk.com/']
 
 
 # Application definition
