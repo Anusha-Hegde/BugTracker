@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'i4de@r%v$%(1$8h7r@imoy89j4ye&^h@8licjd%nee8m@ud=+z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://bugtracker-env.eba-s6bgjgh8.ap-south-1.elasticbeanstalk.com/']
+ALLOWED_HOSTS = ['ec2-3-132-212-55.us-east-2.compute.amazonaws.com']
 
 
 # Application definition
@@ -130,3 +131,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
